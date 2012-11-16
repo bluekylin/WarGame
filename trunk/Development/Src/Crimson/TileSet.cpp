@@ -54,7 +54,7 @@ UnitSet InitUnitSetFromUSRCFile(const char* filename)
 	string OneLine;
 
     sregex titlerex = '[' >> *space >> (s1= +set[ _w | '-' ]) >> *space >> ']';
-	sregex contentrex = (s1= +set[ _w | '-' | '(' | ')' ]) >> *space >> '=' >> *space >> (s2= +~_s);
+	sregex contentrex = (s1= +set[ _w | '-' | '(' | ')' ]) >> *space >> '=' >> *space >> (s2= +set[ alnum | ' ' | '-' ]);
 	//power(air) = 30 (2-6)
 	sregex powerpattern = "power(" >> (s1 = +_w ) >> ')' >> *space >> '=' >> *space >> (s2 = +_d ) >> *space >> !( '(' >> *space >> ( +_d ) >> *space >> '-' >> *space >> (+_d) >> *space >> ')' );
     smatch what;
